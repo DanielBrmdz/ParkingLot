@@ -1,0 +1,43 @@
+Arándano/8247
+Frambuesa/15695
+Fresa/17908
+Grosella espinosa/16916
+Grosella negra/14106
+Grosella roja/11712
+Zarzamora/11571
+Limón/13388
+Mandarina/13570
+Naranja/14738
+Pomelo/8581
+Melón/19676
+Sandía/17429
+Aguacate/9853
+Carambola/9786
+Chirimoya/17870
+Coco/16571
+Dátil/8529
+Fruta de la pasión/12014
+Kiwi/18854
+Litchi/10029
+Mango/13259
+Papaya/19834
+Piña/18873
+Plátano/19138
+Albaricoque/14346
+Cereza/15235
+Ciruela/8304
+Higo/19497
+Kaki/15530
+Manzana/7413
+Melocotón/11023
+Nectarina/9616
+Níspero/7645
+Pera/15609
+Uva/7518
+Almendra/15849
+Avellana/16719
+Cacahuete/12880
+Castaña/7899
+Nuez/7441
+Pacana/12990
+Pistacho/9477

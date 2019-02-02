@@ -16,9 +16,9 @@ public class FileManager {
 	}
 
 	public void uploadFile() throws IOException {
-		fruits = Files.readAllLines(Paths.get("/home/usuarioacer/Escritorio/Frutas.txt"));
-		tubers = Files.readAllLines(Paths.get("/home/usuarioacer/Escritorio/Tuberculos.txt"));
-		vegetables = Files.readAllLines(Paths.get("/home/usuarioacer/Escritorio/Hortalizas.txt"));
+		fruits = Files.readAllLines(Paths.get("./resource/Frutas.txt"));
+		tubers = Files.readAllLines(Paths.get("./resource/Tuberculos.txt"));
+		vegetables = Files.readAllLines(Paths.get("./resource/Hortalizas.txt"));
 	}
 
 	public List<String> getFruits() {

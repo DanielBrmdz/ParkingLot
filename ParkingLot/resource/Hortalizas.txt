@@ -1,0 +1,49 @@
+Chugua/7317
+Brócoli/11771
+Col blanca/4557
+Col china/9950
+Col de Bruselas/7676
+Col de Milán/3315
+Col lombarda/7877
+Coliflor/4589
+Colinabo/7768
+Colirábano/11484
+Nabo/9503
+Rábano/5803
+Alcachofa/10356
+Boniato/4996
+Escarola/12414
+Lechuga/10819
+Calabacín/12075
+Calabaza/7158
+Pepino/7479
+Guisante/6282
+Haba/5567
+Judía verde/11520
+Maíz/11712
+Champiñón/11542
+Acelga/11534
+Apio/11495
+Borraja/8553
+Endibia/4077
+Escarola/10934
+Espinaca/6362
+Hierba de los canónigos/12744
+Lechuga/8543
+Perejil/8568
+Ajo/8712
+Ascalonia/7339
+Cebolla/3817
+Espárrago/10659
+Puerro/3917
+Acelga/10567
+Espinaca/12978
+Remolacha/10662
+Berenjena/10434
+Patata/5886
+Pimiento/9675
+Tomate/9519
+Apio/10923
+Apio nabo/9392
+Chirivía/10539
+Perejil/8828
