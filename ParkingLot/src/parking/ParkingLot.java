@@ -2,28 +2,39 @@ package parking;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 import fileManager.FileManager;
 
 public class ParkingLot {
+	
+	public static final double TARIFA = 0.05;
 
 	private ArrayList<Car> cars;
+	private ArrayList<String> salida;
 	private ArrayList<Product> fruits;
 	private ArrayList<Product> vegetables;
 	private ArrayList<Product> tubers;
 	private FileManager fileManager;
 
-	public ParkingLot() throws IOException {
+	public ParkingLot()  {
 
 		cars = new ArrayList();
 		fruits = new ArrayList();
 		tubers = new ArrayList();
 		vegetables = new ArrayList();
-		fileManager = new FileManager();
-		read();
+		salida = new ArrayList();
+		try {
+			fileManager = new FileManager();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 	}
+
+
 
 	public void read() {
 		readFruits();
@@ -31,7 +42,37 @@ public class ParkingLot {
 		readVegetables();
 	}
 	
-	public void readFruits() {
+	public void addCar(double weight, String plate, Product producto) {
+		
+		Car newCar = new Car( weight,  plate,  producto.getName() ,  producto.getPrice());
+		cars.add(newCar);
+		 
+	}
+	
+	public double removeCar( int pos , Calendar time , double peso) {
+		
+		long minute = ((time.getTimeInMillis() - cars.get(pos).getDate().getTimeInMillis())/60000);
+		System.err.println(minute);
+		if (minute < 180) {
+			double pesoF = cars.get(pos).getWeight() - peso;
+			double tarifa = ((cars.get(pos).getPrice()* (pesoF/100))*TARIFA);	
+			double precio =  tarifa * (minute / 10);
+			salida.add(cars.get(pos).toString() + " Peso Final: " + pesoF +"kg" + " Pago: $" + (int)precio );
+			return precio;
+		}else {
+			double pesoF = cars.get(pos).getWeight() - peso;
+			double tarifa = ((cars.get(pos).getPrice()* (pesoF/100))*TARIFA);	
+			double precio =  tarifa * (minute ) + (minute - 180)* 200 ;
+			salida.add(cars.get(pos).toString()+ " Peso Final: " + pesoF +"kg" + " Pago: $" + (int)precio  + "Recargo de: $" + (int)(minute - 180)* 200 );
+			return precio;
+		}
+			
+		
+	}
+	
+
+	
+	private void readFruits() {
 		for (String fruit : fileManager.getFruits()) {
 			String[] data = fruit.split("/");
 			int price = Integer.parseInt(data[1]);
@@ -40,7 +81,7 @@ public class ParkingLot {
 
 	}
 
-	public void readVegetables() {
+	private void readVegetables() {
 		for (String vegetable : fileManager.getVegetables()) {
 			String[] data = vegetable.split("/");
 			int price = Integer.parseInt(data[1]);
@@ -49,7 +90,7 @@ public class ParkingLot {
 
 	}
 
-	public void readTubers() {
+	private void readTubers() {
 		for (String tuber : fileManager.getVegetables()) {
 			String[] data = tuber.split("/");
 			int price = Integer.parseInt(data[1]);
@@ -57,7 +98,14 @@ public class ParkingLot {
 		}
 
 	}
+	
 
+	public ArrayList<String> getSalida() {
+		return salida;
+	}
+
+
+	
 	public ArrayList<Car> getCars() {
 		return cars;
 	}
@@ -82,19 +130,8 @@ public class ParkingLot {
 		return fileManager;
 	}
 
-	public static void main(String[] args) throws IOException {
-		ParkingLot p = new ParkingLot();
-		for (int i = 0; i < p.getFruits().size(); i++) {
-			System.out.println(p.getFruits().get(i));
-		}
 	
-		for (int i = 0; i < p.getTubers().size(); i++) {
-			System.out.println(p.getTubers().get(i));
-		}
-		for (int i = 0; i < p.getVegetables().size(); i++) {
-			System.out.println(p.getVegetables().get(i));
-		}
 
-	}
+	
 
 }

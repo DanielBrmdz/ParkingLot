@@ -1,21 +1,20 @@
 package parking;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Car {
+public class Car extends Product{
 
 	private double weight;
 	private String plate;
-	private String producto;
 	private Calendar date;
 
-	public Car(double weight, String plate, String producto) {
+	public Car(double weight, String plate, String name , double price) {
+		super(name , price);
 		date = new GregorianCalendar();
 		this.weight = weight;
 		this.plate = plate;
-		this.producto = producto;
+		
 	}
 
 	public double getWeight() {
@@ -34,13 +33,6 @@ public class Car {
 		this.plate = plate;
 	}
 
-	public String getProducto() {
-		return producto;
-	}
-
-	public void setProducto(String producto) {
-		this.producto = producto;
-	}
 
 	public Calendar getDate() {
 		return date;
@@ -52,9 +44,9 @@ public class Car {
 
 	@Override
 	public String toString() {
-		return "Plate" + plate + ", Weight" + weight + ", producto= " + producto + ", date= " + date.get(Calendar.YEAR)
+		return "Plate" + plate + ", Weight" + weight + "kg"+ ", producto= " + getName()  + ", price= $" + getPrice() + ", date= " + date.get(Calendar.YEAR)
 				+ "/" + (date.get(Calendar.MONTH) + 1) + "/" + date.get(Calendar.DAY_OF_MONTH) + "/"
-				+ date.get(Calendar.HOUR_OF_DAY) + ":" + date.get(Calendar.MINUTE);
+				+ date.get(Calendar.HOUR_OF_DAY) + ":" + date.get(Calendar.MINUTE) ;
 	}
 
 }
