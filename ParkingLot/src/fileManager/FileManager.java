@@ -7,8 +7,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
+
+import parking.Car;
 
 public class FileManager {
 
@@ -26,27 +29,40 @@ public class FileManager {
 		vegetables = Files.readAllLines(Paths.get("./resource/Hortalizas.txt"));
 	}
 	
-	/*public void writeFile(ArrayList<String> report) throws IOException {
+	public void writeFile(ArrayList<String> salida , ArrayList<Car> parking) throws IOException {
 		
 		
+		Calendar date = new GregorianCalendar();
+		
+		
+ 		System.out.println("Entra al metodo");
 		File archive = new File("./Report.txt");
 		BufferedWriter bw = new BufferedWriter(new FileWriter(archive));
-		
-		for (String listLine : listBooks) {
-			String[] data = listLine.split("#");
-			int page = Integer.parseInt(data[3]);
-			if ((page > 49 && page < 1401) && (data[5].equals("Educacion") || data[5].equals("Ciencia Ficcion"))) {
-				booksValid.add(listLine);
-			} else {
-				bw.write(listLine);
-				bw.newLine();
-			}
+		String titulo = ("Reporte Dia: " + date.get(Calendar.YEAR)
+		+ "/" + (date.get(Calendar.MONTH) + 1) + "/" + date.get(Calendar.DAY_OF_MONTH) + "/"
+		+ date.get(Calendar.HOUR_OF_DAY) + ":" + date.get(Calendar.MINUTE) );	
+		bw.write(titulo);
+		bw.newLine();
+		String cars = ("Autos en el Parkeadero"); 
+		bw.write(cars);
+		bw.newLine();
+		for (Car lineParking : parking) {
+			
+			bw.write(lineParking.toString());
+			bw.newLine();	
 		}
+		
+		String carOut = ("Autos Que ya salieron");
+		bw.write(carOut);
+		bw.newLine();
+		for (String lineReport : salida) {
+			
+				bw.write(lineReport);
+				bw.newLine();	
+		}
+		
 		bw.close();
-		listBooks = booksValid;
-		validBooks = listBooks.size();
-		booksNotValid = (admittedBooks - listBooks.size());
-	}*/
+	}
 
 	public List<String> getFruits() {
 		return fruits;

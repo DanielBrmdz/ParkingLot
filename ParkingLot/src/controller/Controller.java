@@ -28,16 +28,30 @@ public class Controller {
 	private void index() {
 		switch (console.menu()) {
 		case 1:
-			addCar();
+			if(parking.getCars().size() < 16) {
+				addCar();
+			}else {
+				
+				console.noMore();
+			}
 			index();
 			break;
 		case 2:
 			removeCar(console.removeCar(parking.getCars()), console.time() , console.getWeigth());
 			index();
 			break;
+		case 3:
+			generateReport();
+			console.aviso();
+			index();
+			break;	
 		default:
 			break;
 		}
+	}
+	
+	public void generateReport() {
+		parking.generateReport();
 	}
 
 	public void addCar() {

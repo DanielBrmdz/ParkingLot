@@ -44,7 +44,7 @@ public class Car extends Product{
 
 	@Override
 	public String toString() {
-		return "Plate" + plate + ", Weight" + weight + "kg"+ ", producto= " + getName()  + ", price= $" + getPrice() + ", date= " + date.get(Calendar.YEAR)
+		return "Plate: " + plate + ", Weight: " + weight + "kg"+ ", Producto: " + getName()  + ", Price: $" + getPrice() + ", Entrada: " + date.get(Calendar.YEAR)
 				+ "/" + (date.get(Calendar.MONTH) + 1) + "/" + date.get(Calendar.DAY_OF_MONTH) + "/"
 				+ date.get(Calendar.HOUR_OF_DAY) + ":" + date.get(Calendar.MINUTE) ;
 	}

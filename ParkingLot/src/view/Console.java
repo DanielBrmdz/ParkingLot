@@ -76,6 +76,13 @@ public class Console {
 		
 		
 	}
+	public void aviso() {
+		System.out.println("Se genero el Reporte en <<./Report.txt>>  ");
+	}
+	
+	public void noMore() {
+		System.out.println("El parqueadero esta lleno");
+	}
 	
 	public void tarifa(double tarifa) {
 		System.out.println("el vehiculo debe pagar: $" + (int)tarifa);

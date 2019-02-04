@@ -7,7 +7,7 @@ import java.util.Calendar;
 import fileManager.FileManager;
 
 public class ParkingLot {
-	
+
 	public static final double TARIFA = 0.05;
 
 	private ArrayList<Car> cars;
@@ -17,7 +17,7 @@ public class ParkingLot {
 	private ArrayList<Product> tubers;
 	private FileManager fileManager;
 
-	public ParkingLot()  {
+	public ParkingLot() {
 
 		cars = new ArrayList();
 		fruits = new ArrayList();
@@ -30,48 +30,45 @@ public class ParkingLot {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 	}
-
-
 
 	public void read() {
 		readFruits();
 		readTubers();
 		readVegetables();
 	}
-	
+
 	public void addCar(double weight, String plate, Product producto) {
-		
-		Car newCar = new Car( weight,  plate,  producto.getName() ,  producto.getPrice());
+
+		Car newCar = new Car(weight, plate, producto.getName(), producto.getPrice());
 		cars.add(newCar);
-		 
+
 	}
-	
-	public double removeCar( int pos , Calendar time , double peso) {
-		
-		long minute = ((time.getTimeInMillis() - cars.get(pos).getDate().getTimeInMillis())/60000);
-		System.err.println(minute);
+
+	public double removeCar(int pos, Calendar time, double peso) {
+
+		long minute = ((time.getTimeInMillis() - cars.get(pos).getDate().getTimeInMillis()) / 60000);
+
 		if (minute < 180) {
 			double pesoF = cars.get(pos).getWeight() - peso;
-			double tarifa = ((cars.get(pos).getPrice()* (pesoF/100))*TARIFA);	
-			double precio =  tarifa * (minute / 10);
-			salida.add(cars.get(pos).toString() + " Peso Final: " + pesoF +"kg" + " Pago: $" + (int)precio );
+			double tarifa = ((cars.get(pos).getPrice() * (pesoF / 100)) * TARIFA);
+			double precio = tarifa * (minute / 10);
+			salida.add(cars.get(pos).toString() + " Peso Final: " + pesoF + "kg" + " Pago: $" + (int) precio);
+			cars.remove(pos);
 			return precio;
-		}else {
+		} else {
 			double pesoF = cars.get(pos).getWeight() - peso;
-			double tarifa = ((cars.get(pos).getPrice()* (pesoF/100))*TARIFA);	
-			double precio =  tarifa * (minute ) + (minute - 180)* 200 ;
-			salida.add(cars.get(pos).toString()+ " Peso Final: " + pesoF +"kg" + " Pago: $" + (int)precio  + "Recargo de: $" + (int)(minute - 180)* 200 );
+			double tarifa = ((cars.get(pos).getPrice() * (pesoF / 100)) * TARIFA);
+			double precio = tarifa * (minute) + (minute - 180) * 200;
+			salida.add(cars.get(pos).toString() + " Peso Final: " + pesoF + "kg" + " Pago: $" + (int) precio
+					+ "Recargo de: $" + (int) (minute - 180) * 200);
+			cars.remove(pos);
 			return precio;
 		}
-			
-		
-	}
-	
 
-	
+	}
+
 	private void readFruits() {
 		for (String fruit : fileManager.getFruits()) {
 			String[] data = fruit.split("/");
@@ -90,6 +87,16 @@ public class ParkingLot {
 
 	}
 
+	public void generateReport() {
+		
+		try {
+			fileManager.writeFile(salida , cars);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	private void readTubers() {
 		for (String tuber : fileManager.getVegetables()) {
 			String[] data = tuber.split("/");
@@ -98,14 +105,11 @@ public class ParkingLot {
 		}
 
 	}
-	
 
 	public ArrayList<String> getSalida() {
 		return salida;
 	}
 
-
-	
 	public ArrayList<Car> getCars() {
 		return cars;
 	}
@@ -129,9 +133,5 @@ public class ParkingLot {
 	public FileManager getFileManager() {
 		return fileManager;
 	}
-
-	
-
-	
 
 }
