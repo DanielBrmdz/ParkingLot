@@ -89,6 +89,28 @@ public class Controller {
 			
 		}
 	}
+	
+	
+	public  double getPrice(String lista , String product) {
+		
+		switch (lista) {
+		case "tubers":
+				return parking.price(3, product);
+			
+			
+		case "vegetables":
+			return parking.price(2, product);
+			
+			
+		case "fruits":
+			return parking.price(1, product);
+				
+		default:
+			break;
+		}
+		return 0;
+		
+	}
 
 	public static void main(String[] args) {
 		new Controller();

@@ -25,6 +25,9 @@ public class Controller implements ActionListener{
     public Controller(){
         main = new MainView(this);
     }
+    
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("In")){

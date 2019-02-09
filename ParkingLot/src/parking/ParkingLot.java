@@ -88,9 +88,9 @@ public class ParkingLot {
 	}
 
 	public void generateReport() {
-		
+
 		try {
-			fileManager.writeFile(salida , cars);
+			fileManager.writeFile(salida, cars);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,6 +104,38 @@ public class ParkingLot {
 			tubers.add(new Product(data[0], price));
 		}
 
+	}
+
+	public double price(int opt, String product) {
+
+		switch (opt) {
+		case 1:
+			for (Product fruit : fruits) {
+				if(fruit.getName().equals(product)) {
+					return fruit.getPrice();
+				}
+			}
+			break;
+		case 2:	
+				for (Product vegetables : fruits) {
+					if(vegetables.getName().equals(product)) {
+						return vegetables.getPrice();
+					}
+				}
+			break;
+		case 3:
+			for (Product tubers : fruits) {
+				if(tubers.getName().equals(product)) {
+					return tubers.getPrice();
+				}
+			}
+
+			break;
+		default:
+			break;
+		}
+
+		return 0;
 	}
 
 	public ArrayList<String> getSalida() {
