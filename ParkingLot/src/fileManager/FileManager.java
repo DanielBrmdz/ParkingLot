@@ -31,11 +31,7 @@ public class FileManager {
 	
 	public void writeFile(ArrayList<String> salida , ArrayList<Car> parking) throws IOException {
 		
-		
 		Calendar date = new GregorianCalendar();
-		
-		
- 		System.out.println("Entra al metodo");
 		File archive = new File("./Report.txt");
 		BufferedWriter bw = new BufferedWriter(new FileWriter(archive));
 		String titulo = ("Reporte Dia: " + date.get(Calendar.YEAR)
@@ -63,6 +59,9 @@ public class FileManager {
 		
 		bw.close();
 	}
+	
+	
+	
 
 	public List<String> getFruits() {
 		return fruits;

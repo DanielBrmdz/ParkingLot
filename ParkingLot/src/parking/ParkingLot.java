@@ -19,11 +19,11 @@ public class ParkingLot {
 
 	public ParkingLot() {
 
-		cars = new ArrayList();
-		fruits = new ArrayList();
-		tubers = new ArrayList();
-		vegetables = new ArrayList();
-		salida = new ArrayList();
+		cars = new ArrayList<Car>();
+		fruits = new ArrayList<Product>();
+		tubers = new ArrayList<Product>();
+		vegetables = new ArrayList<Product>();
+		salida = new ArrayList<String>();
 		try {
 			fileManager = new FileManager();
 		} catch (IOException e) {
@@ -98,7 +98,7 @@ public class ParkingLot {
 	}
 
 	private void readTubers() {
-		for (String tuber : fileManager.getVegetables()) {
+		for (String tuber : fileManager.getTubers()) {
 			String[] data = tuber.split("/");
 			int price = Integer.parseInt(data[1]);
 			tubers.add(new Product(data[0], price));

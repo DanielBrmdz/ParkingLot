@@ -1,5 +1,4 @@
-Reporte Dia: 2019/2/3/19:0
+Reporte Dia: 2019/2/6/14:32
 Autos en el Parkeadero
-Plate: asd, Weight: 5000.0kg, Producto: Grosella roja, Price: $11712.0, date= 2019/2/3/18:59
 Autos Que ya salieron
-Plate: DBM666, Weight: 4500.0kg, Producto: Fresa, Price: $17908.0, date= 2019/2/3/18:59 Peso Final: 500.0kg Pago: $26862
+Plate: asd, Weight: 4500.0kg, Producto: Fresa, Price: $17908.0, Entrada: 2019/2/6/14:31 Peso Final: 700.0kg Pago: $68945
