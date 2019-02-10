@@ -3,8 +3,10 @@ package parking;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import fileManager.FileManager;
+import persistence.FilesManager;
 
 public class ParkingLot {
 
@@ -16,9 +18,12 @@ public class ParkingLot {
 	private ArrayList<Product> vegetables;
 	private ArrayList<Product> tubers;
 	private FileManager fileManager;
+	private FilesManager filesManager;
 
 	public ParkingLot() {
-
+		
+		
+		filesManager = new FilesManager();
 		cars = new ArrayList<Car>();
 		fruits = new ArrayList<Product>();
 		tubers = new ArrayList<Product>();
@@ -138,6 +143,20 @@ public class ParkingLot {
 		return 0;
 	}
 
+	
+	/*private void readFruits() {
+		Object object  = filesManager.createTypeFile("./resource/Frutas.txt");
+		
+		List<String>  list = (List<String>) object;
+		for (String fruit : list) {
+			String[] data = fruit.split("/");
+			int price = Integer.parseInt(data[1]);
+			fruits.add(new Product(data[0], price));
+		}
+
+	}*/
+	
+	
 	public ArrayList<String> getSalida() {
 		return salida;
 	}
@@ -164,6 +183,14 @@ public class ParkingLot {
 
 	public FileManager getFileManager() {
 		return fileManager;
+	}
+	
+	public static void main(String[] args) {
+		ParkingLot parking = new ParkingLot();
+		parking.read();
+		for (int i = 0; i < parking.getFruits().size(); i++) {
+			System.out.println(parking.getFruits().get(i));
+		}
 	}
 
 }
