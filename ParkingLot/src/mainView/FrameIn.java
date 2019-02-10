@@ -9,6 +9,7 @@ import mainController.Controller;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ItemListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -25,11 +26,12 @@ import javax.swing.SpinnerNumberModel;
  */
 public class FrameIn extends JFrame {
 
-    private JLabel lblPlate, lblWeight, lblType, lblObject, lblParking, Parking;
+    private JLabel lblPlate, lblWeight, lblType, lblObject, Price, lblParking, Parking;
     private JTextField txtPlate;
     private JSpinner jsWeight;
-    private JComboBox comType, comTb, comFr, comVeg;
-    private JButton btnAdd;
+    private JComboBox comType, comFood;
+    private JButton btnAdd, btnPrice;
+
 
     public FrameIn(Controller Controller) {
         init(Controller);
@@ -39,13 +41,14 @@ public class FrameIn extends JFrame {
 
         setTitle("Parking");        
         setLayout(new BorderLayout());
-        setSize(400,200);
+        setLocationRelativeTo(null);
+        setSize(400,250);
 
         JPanel Lbl = new JPanel();
-        Lbl.setLayout(new GridLayout(4, 1));
+        Lbl.setLayout(new GridLayout(5, 1));
 
         JPanel Answ = new JPanel();
-        Answ.setLayout(new GridLayout(4, 1));
+        Answ.setLayout(new GridLayout(5, 1));
 
         JPanel Data = new JPanel();
         Data.setLayout(new GridLayout(1, 2));
@@ -59,38 +62,37 @@ public class FrameIn extends JFrame {
         lblPlate = new JLabel("Placa");
         lblWeight = new JLabel("Peso(kg)");
         lblType = new JLabel("Categoria de almiento");
-        lblObject = new JLabel("Alimento");
+        lblObject = new JLabel("Alimento");        
+        btnPrice = new JButton("Precio");
+        btnPrice.setActionCommand("price");
+        btnPrice.addActionListener(Controller);
 
         Lbl.add(lblPlate);
         Lbl.add(lblWeight);
         Lbl.add(lblType);
         Lbl.add(lblObject);
+        Lbl.add(btnPrice);
 
         txtPlate = new JTextField(10);
         SpinnerModel smWeight = new SpinnerNumberModel(20000, 5000, 100000, 100);
         jsWeight = new JSpinner(smWeight);
 
         comType = new JComboBox();
+        comType.addItem("Seleccione el tipo de alimento");
         comType.addItem("Tuberculo");
         comType.addItem("Fruta");
-        comType.addItem("Vegetal");
+        comType.addItem("Hortaliza");
 
-        comTb = new JComboBox();
-        comTb.addItem("Papa");
-        comTb.addItem("Yuca");
-
-        comFr = new JComboBox();
-        comFr.addItem("Maracuyá");
-        comFr.addItem("Manzana");
-
-        comVeg = new JComboBox();
-        comVeg.addItem("Zanahoria");
-        comVeg.addItem("Lechuga");
-
+        comFood = new JComboBox();
+        
+        Price = new JLabel("");
+        
         Answ.add(txtPlate);
         Answ.add(jsWeight);
         Answ.add(comType);
-        Answ.add(comTb);
+        Answ.add(comFood);
+        Answ.add(Price);
+        
 
         Data.add(Lbl);
         Data.add(Answ);
@@ -112,5 +114,31 @@ public class FrameIn extends JFrame {
         add(Park, BorderLayout.SOUTH);
         
         setVisible(true);
+    }
+    
+    
+    
+    public JComboBox TypeCom(){
+        return comType;
+    }
+    public JComboBox FoodCom(){
+        return comFood;
+    }
+    public JTextField getPlate(){
+        return txtPlate;
+    }
+    public Double getWeight(){
+        int spinner = (Integer) jsWeight.getValue(); 
+        double value = new Double(spinner);
+        return value;
+    }
+    public JComboBox getProduc(){
+        return comFood;
+    }
+    public void setPrice(Double value){        
+        Price.setText(value.toString());
+    }
+    public Double getPrice(){        
+        return Double.parseDouble(Price.getText());
     }
 }

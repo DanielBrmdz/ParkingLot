@@ -8,162 +8,206 @@ import fileManager.FileManager;
 
 public class ParkingLot {
 
-	public static final double TARIFA = 0.05;
+    public static final double TARIFA = 0.05;
 
-	private ArrayList<Car> cars;
-	private ArrayList<String> salida;
-	private ArrayList<Product> fruits;
-	private ArrayList<Product> vegetables;
-	private ArrayList<Product> tubers;
-	private FileManager fileManager;
+    private ArrayList<Car> cars;
+    private ArrayList<String> salida;
+    private ArrayList<Product> fruits;
+    private ArrayList<Product> vegetables;
+    private ArrayList<Product> tubers;
+    private FileManager fileManager;
 
-	public ParkingLot() {
+    public ParkingLot() {
 
-		cars = new ArrayList<Car>();
-		fruits = new ArrayList<Product>();
-		tubers = new ArrayList<Product>();
-		vegetables = new ArrayList<Product>();
-		salida = new ArrayList<String>();
-		try {
-			fileManager = new FileManager();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        cars = new ArrayList<Car>();
+        fruits = new ArrayList<Product>();
+        tubers = new ArrayList<Product>();
+        vegetables = new ArrayList<Product>();
+        salida = new ArrayList<String>();
+        try {
+            fileManager = new FileManager();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-	}
+    }
 
-	public void read() {
-		readFruits();
-		readTubers();
-		readVegetables();
-	}
+    public void read() {
+        readFruits();
+        readTubers();
+        readVegetables();
+    }
 
-	public void addCar(double weight, String plate, Product producto) {
+    public void addCar(double weight, String plate, Product producto) {
 
-		Car newCar = new Car(weight, plate, producto.getName(), producto.getPrice());
-		cars.add(newCar);
+        Car newCar = new Car(weight, plate, producto.getName(), producto.getPrice());
+        cars.add(newCar);
 
-	}
+    }
 
-	public double removeCar(int pos, Calendar time, double peso) {
+    public double removeCar(int pos, Calendar time, double peso) {
 
-		long minute = ((time.getTimeInMillis() - cars.get(pos).getDate().getTimeInMillis()) / 60000);
+        long minute = ((time.getTimeInMillis() - cars.get(pos).getDate().getTimeInMillis()) / 60000);
 
-		if (minute < 180) {
-			double pesoF = cars.get(pos).getWeight() - peso;
-			double tarifa = ((cars.get(pos).getPrice() * (pesoF / 100)) * TARIFA);
-			double precio = tarifa * (minute / 10);
-			salida.add(cars.get(pos).toString() + " Peso Final: " + pesoF + "kg" + " Pago: $" + (int) precio);
-			cars.remove(pos);
-			return precio;
-		} else {
-			double pesoF = cars.get(pos).getWeight() - peso;
-			double tarifa = ((cars.get(pos).getPrice() * (pesoF / 100)) * TARIFA);
-			double precio = tarifa * (minute) + (minute - 180) * 200;
-			salida.add(cars.get(pos).toString() + " Peso Final: " + pesoF + "kg" + " Pago: $" + (int) precio
-					+ "Recargo de: $" + (int) (minute - 180) * 200);
-			cars.remove(pos);
-			return precio;
-		}
+        if (minute < 180) {
+            double pesoF = cars.get(pos).getWeight() - peso;
+            double tarifa = ((cars.get(pos).getPrice() * (pesoF / 100)) * TARIFA);
+            double precio = tarifa * (minute / 10);
+            salida.add(cars.get(pos).toString() + " Peso Final: " + pesoF + "kg" + " Pago: $" + (int) precio);
+            cars.remove(pos);
+            return precio;
+        } else {
+            double pesoF = cars.get(pos).getWeight() - peso;
+            double tarifa = ((cars.get(pos).getPrice() * (pesoF / 100)) * TARIFA);
+            double precio = tarifa * (minute) + (minute - 180) * 200;
+            salida.add(cars.get(pos).toString() + " Peso Final: " + pesoF + "kg" + " Pago: $" + (int) precio
+                    + "Recargo de: $" + (int) (minute - 180) * 200);
+            cars.remove(pos);
+            return precio;
+        }
 
-	}
+    }
 
-	private void readFruits() {
-		for (String fruit : fileManager.getFruits()) {
-			String[] data = fruit.split("/");
-			int price = Integer.parseInt(data[1]);
-			fruits.add(new Product(data[0], price));
-		}
+    private void readFruits() {
+        for (String fruit : fileManager.getFruits()) {
+            String[] data = fruit.split("/");
+            int price = Integer.parseInt(data[1]);
+            fruits.add(new Product(data[0], price));
+        }
 
-	}
+    }
 
-	private void readVegetables() {
-		for (String vegetable : fileManager.getVegetables()) {
-			String[] data = vegetable.split("/");
-			int price = Integer.parseInt(data[1]);
-			vegetables.add(new Product(data[0], price));
-		}
+    private void readVegetables() {
+        for (String vegetable : fileManager.getVegetables()) {
+            String[] data = vegetable.split("/");
+            int price = Integer.parseInt(data[1]);
+            vegetables.add(new Product(data[0], price));
+        }
 
-	}
+    }
 
-	public void generateReport() {
+    public void generateReport() {
 
-		try {
-			fileManager.writeFile(salida, cars);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        try {
+            fileManager.writeFile(salida, cars);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	private void readTubers() {
-		for (String tuber : fileManager.getTubers()) {
-			String[] data = tuber.split("/");
-			int price = Integer.parseInt(data[1]);
-			tubers.add(new Product(data[0], price));
-		}
+    private void readTubers() {
+        for (String tuber : fileManager.getTubers()) {
+            String[] data = tuber.split("/");
+            int price = Integer.parseInt(data[1]);
+            tubers.add(new Product(data[0], price));
+        }
 
-	}
+    }
 
-	public double price(int opt, String product) {
+    public double getPriceFruits(String product) {
+        double value = 0.0;
+        for (Product fruit : fruits) {
+            if (fruit.getName().equals(product)) {
+                value = fruit.getPrice();
+            }
+        }
+        return value;
+    }
 
-		switch (opt) {
-		case 1:
-			for (Product fruit : fruits) {
-				if(fruit.getName().equals(product)) {
-					return fruit.getPrice();
-				}
-			}
-			break;
-		case 2:	
-				for (Product vegetables : fruits) {
-					if(vegetables.getName().equals(product)) {
-						return vegetables.getPrice();
-					}
-				}
-			break;
-		case 3:
-			for (Product tubers : fruits) {
-				if(tubers.getName().equals(product)) {
-					return tubers.getPrice();
-				}
-			}
+    public double getPriceVegetables(String product) {
+        double value = 0.0;
+        for (Product vegetables : vegetables) {
+            if (vegetables.getName().equals(product)) {
+                value = vegetables.getPrice();
+            }
+        }
+        return value;
+    }
 
-			break;
-		default:
-			break;
-		}
+    public double getPriceTubers(String product) {
+        double value = 0.0;
+        for (Product tubers : tubers) {
+            if (tubers.getName().equals(product)) {
+                value = tubers.getPrice();
+            }
+        }
+        return value;
+    }
 
-		return 0;
-	}
+    public Product getProductTub(String name) {
+        int posProd = tubers.indexOf(name);
+        return tubers.get(posProd);
+    }
 
-	public ArrayList<String> getSalida() {
-		return salida;
-	}
+    public Product getProductVeg(String name) {
+        int posProd = vegetables.indexOf(name);
+        return vegetables.get(posProd);
+    }
 
-	public ArrayList<Car> getCars() {
-		return cars;
-	}
+    public Product getProductFru(String name) {
+        int posProd = fruits.indexOf(name);
+        return fruits.get(posProd);
+    }
 
-	public void setCars(ArrayList<Car> cars) {
-		this.cars = cars;
-	}
+//    public double price(int opt, String product) {
+//
+//        switch (opt) {
+//            case 1:
+//                for (Product fruit : fruits) {
+//                    if (fruit.getName().equals(product)) {
+//                        return fruit.getPrice();
+//                    }
+//                }
+//                break;
+//            case 2:
+//                for (Product vegetables : fruits) {
+//                    if (vegetables.getName().equals(product)) {
+//                        return vegetables.getPrice();
+//                    }
+//                }
+//                break;
+//            case 3:
+//                for (Product tubers : fruits) {
+//                    if (tubers.getName().equals(product)) {
+//                        return tubers.getPrice();
+//                    }
+//                }
+//
+//                break;
+//            default:
+//                break;
+//        }
+//
+//        return 0;
+//    }
+    public ArrayList<String> getSalida() {
+        return salida;
+    }
 
-	public ArrayList<Product> getFruits() {
-		return fruits;
-	}
+    public ArrayList<Car> getCars() {
+        return cars;
+    }
 
-	public ArrayList<Product> getVegetables() {
-		return vegetables;
-	}
+    public void setCars(ArrayList<Car> cars) {
+        this.cars = cars;
+    }
 
-	public ArrayList<Product> getTubers() {
-		return tubers;
-	}
+    public ArrayList<Product> getFruits() {
+        return fruits;
+    }
 
-	public FileManager getFileManager() {
-		return fileManager;
-	}
+    public ArrayList<Product> getVegetables() {
+        return vegetables;
+    }
+
+    public ArrayList<Product> getTubers() {
+        return tubers;
+    }
+
+    public FileManager getFileManager() {
+        return fileManager;
+    }
 
 }
