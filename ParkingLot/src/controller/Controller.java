@@ -91,7 +91,7 @@ public class Controller {
 	}
 	
 	
-	public  double getPrice(String lista , String product) {
+	/*public  double getPrice(String lista , String product) {
 		
 		switch (lista) {
 		case "tubers":
@@ -110,7 +110,7 @@ public class Controller {
 		}
 		return 0;
 		
-	}
+	}*/
 
 	public static void main(String[] args) {
 		new Controller();

@@ -1,4 +1,23 @@
-Reporte Dia: 2019/2/6/14:32
+Reporte Dia: 2019/2/10/18:19
 Autos en el Parkeadero
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
+Plate: asdf, Weight: 20000.0kg, Producto: Zanahoria, Price: $18433.0, Entrada: 2019/2/10/18:19
 Autos Que ya salieron
-Plate: asd, Weight: 4500.0kg, Producto: Fresa, Price: $17908.0, Entrada: 2019/2/6/14:31 Peso Final: 700.0kg Pago: $68945

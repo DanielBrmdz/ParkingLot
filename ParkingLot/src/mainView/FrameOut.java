@@ -34,6 +34,7 @@ public class FrameOut extends JFrame {
         super("Salida de vehículos");
         setSize(700, 700);
         setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
 
         JPanel Lbl = new JPanel();
         Lbl.setLayout(new GridLayout(5, 1, 10, 10));
@@ -46,7 +47,7 @@ public class FrameOut extends JFrame {
 
         JPanel Data = new JPanel();
         Data.setLayout(new FlowLayout());
-        
+
         JPanel Print = new JPanel();
         Print.setLayout(new FlowLayout());
 
@@ -95,7 +96,7 @@ public class FrameOut extends JFrame {
         btnPrint = new JButton("Imprimir factura");
         btnPrint.setActionCommand("print");
         btnPrint.addActionListener(Controller);
-        
+
         Print.add(btnPrint);
 
         add(table, BorderLayout.NORTH);
@@ -103,5 +104,13 @@ public class FrameOut extends JFrame {
         add(Print, BorderLayout.SOUTH);
 
         setVisible(true);
+    }
+
+    public void addElementsToTable(Object[] vector) {
+        table.addElementsToTable(vector);
+    }
+
+    public void clearTableList() {
+        table.cleanTable();
     }
 }

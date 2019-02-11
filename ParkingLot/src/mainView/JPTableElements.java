@@ -33,7 +33,7 @@ public class JPTableElements extends JPanel {
     public void initComponents() {
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         this.setBackground(Color.decode("#30373D"));
-        String[] headers = {"PLACA", "PESO ENTRADA", "PESO SALIDA", "EN PARQUEADERO"};
+        String[] headers = {"PLACA", "PESO", "FECHA"};
         dtmElements = new DefaultTableModel();
         dtmElements.setColumnIdentifiers(headers);
 
